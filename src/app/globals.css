@@ -5,6 +5,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --brandBeige: #e8d1af;
+  --brandDarkBrown: #54330f;
+  --brandLightText: #efe4d3;
+  --brandMediumBrown: #a89678;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -12,10 +16,4 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
