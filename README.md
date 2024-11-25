@@ -16,7 +16,29 @@ cd tablecheck-swe-takehome-fe
 ## Prerequisites
 
 Make sure you have the following installed on your machine:
+
 - Node.js (v18 and up)
 - Npm (v8 and up)
 
-Open [http://localhost:3001](http://localhost:3001) in your browser to view the app
+## Installing Dependencies
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+## Run the App
+
+The `package.json` script has been adjusted to run the app on PORT 3001 ([http://localhost:3001](http://localhost:3001)) so as not to clash with the corresponding rails backend
+
+```bash
+npm run dev
+```
+
+## Built With:
+
+- Next.js
+- React.js
+- Typescript
+- TailwindCSS
