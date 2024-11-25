@@ -1,28 +1,34 @@
 "use client";
 
-import { useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { PartyResponse } from "@/api/auth";
 import { createParty } from "@/api/party";
-import { toast } from "react-hot-toast";
+import { useParty } from "@/hooks/useParty";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { usePartyContext } from "@/contexts/PartyContext";
+import { useState } from "react";
+import { toast } from "react-hot-toast";
+
+const MAX_CAPACITY = 10;
 
 const CreatePartyForm = () => {
+  const { party } = useParty();
+
   const [partyName, setPartyName] = useState("");
   const [partySize, setPartySize] = useState(0);
-  const MAX_CAPACITY = 10;
 
   const queryClient = useQueryClient();
   const router = useRouter();
-  const { setName } = usePartyContext();
 
-  const { mutate, isPending } = useMutation({
+  if (party) {
+    router.replace("/");
+  }
+
+  const { mutate, isLoading } = useMutation({
     mutationFn: async (data: { name: string; size: number }) =>
-      await createParty(data),
-    onSuccess: () => {
-      setName(partyName);
+      (await createParty(data)).data,
+    onSuccess: (data: PartyResponse) => {
       toast.success("Party created! You've been added to the queue.");
-      queryClient.invalidateQueries({ queryKey: ["currentParty"] });
+      queryClient.setQueryData(["currentParty"], data);
       router.push("/");
     },
     onError: (error: any) => {
@@ -42,7 +48,9 @@ const CreatePartyForm = () => {
 
   const handleInputPartySize = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (parseInt(e.target.value) > MAX_CAPACITY) {
-      toast.error("Party size cannot exceed 10.");
+      toast.error("Party size cannot exceed 10.", {
+        id: "party-size-error",
+      });
       return;
     }
     setPartySize(e.target.value === "" ? 0 : parseInt(e.target.value));
@@ -84,10 +92,11 @@ const CreatePartyForm = () => {
         />
 
         <button
+          disabled={isLoading}
           className="py-2 px-2 mt-2 rounded-full w-1/2 bg-brandBeige text-xl fira-sans-condensed font-semibold text-brandDarkBrown"
           type="submit"
         >
-          Submit
+          {isLoading ? "Hold on..." : "Submit"}
         </button>
       </form>
     </div>

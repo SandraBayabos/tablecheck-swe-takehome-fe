@@ -11,11 +11,10 @@ const queryClient = new QueryClient({
   queryCache: new QueryCache({
     onError: (error: any) => {
       if (error.response?.status === 401) return;
-      if (error.response?.status === 404) return;
 
       toast.error(
         error.response?.data?.message ||
-          error.response?.data ||
+          error.response?.data?.error ||
           error?.message ||
           "An error occurred.",
         {
