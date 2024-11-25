@@ -51,7 +51,7 @@ const Queue = () => {
       ) : (
         <div className="bg-brandMediumPink rounded-2xl p-6 shadow-lg w-full max-w-sm text-center">
           <h1 className="pacifico text-brandDarkBrown text-3xl mb-4">
-            You're in the Queue!
+            Hey, {name}! You're in the Queue!
           </h1>
           <p className="fira-sans-condensed text-brandBeige text-2xl mb-2">
             Position:{" "}
