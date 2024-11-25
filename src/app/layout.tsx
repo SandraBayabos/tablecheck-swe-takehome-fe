@@ -5,6 +5,8 @@ import "./globals.css";
 import { APP_NAME } from "@/configs";
 import { Toaster } from "react-hot-toast";
 import TanStackQueryProvider from "@/providers/TanStackQueryProvider";
+import { PartyProvider } from "@/contexts/PartyContext";
+import Image from "next/image";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -60,20 +62,22 @@ export default function RootLayout({
               },
             }}
           />
-          <div className="h-dvh relative bg-brandBeige">
-            <div className="absolute inset-0 overflow-y-auto flex flex-col">
-              <div className="flex-1">
-                <div className="text-center py-10">
-                  <h1 className="pacifico text-8xl text-brandDarkBrown">
-                    Welcome to Tablecheck
-                  </h1>
-                </div>
-                <div className="flex w-full justify-center items-center px-10">
-                  {children}
+          <PartyProvider>
+            <div className="h-dvh relative bg-brandBeige">
+              <div className="absolute inset-0 overflow-y-auto flex flex-col">
+                <div className="flex-1">
+                  <div className="text-center py-10">
+                    <h1 className="pacifico text-8xl text-brandDarkBrown">
+                      Welcome to Tablecheck
+                    </h1>
+                  </div>
+                  <div className="flex w-full justify-center items-center px-10">
+                    {children}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </PartyProvider>
         </body>
       </html>
     </TanStackQueryProvider>

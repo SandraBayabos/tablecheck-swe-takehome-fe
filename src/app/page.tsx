@@ -14,7 +14,7 @@ export default function Home() {
   const { party, isFetching, error } = useParty();
 
   if (isFetching) {
-    return <div>Loading...</div>;
+    return <></>;
   }
 
   if (["pending_check_in", "in_queue"].includes(party?.status)) {
@@ -30,5 +30,5 @@ export default function Home() {
     router.push("/login");
   }
 
-  return <></>;
+  router.push("/login");
 }
