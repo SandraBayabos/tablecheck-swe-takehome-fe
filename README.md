@@ -19,6 +19,7 @@ Make sure you have the following installed on your machine:
 
 - Node.js (v18 and up)
 - Npm (v8 and up)
+- Npx (v10 and up)
 
 ## Installing Dependencies
 
@@ -30,7 +31,7 @@ npm install
 
 ## Run the App
 
-The `package.json` script has been adjusted to run the app on PORT 3001 ([http://localhost:3001](http://localhost:3001)) so as not to clash with the corresponding rails backend
+The `package.json` script has been adjusted to run the app on `PORT 3001` ([http://localhost:3001](http://localhost:3001)) so as not to clash with the corresponding rails backend
 
 ```bash
 npm run dev
