@@ -9,6 +9,21 @@
   --brandDarkBrown: #54330f;
   --brandLightText: #efe4d3;
   --brandMediumBrown: #a89678;
+  --font-pacifico: "Pacifico", cursive;
+  --font-inter: "Inter", sans-serif;
+  --fira-sans-condensed: "Fira Sans Condensed", sans-serif;
+}
+
+.pacifico {
+  font-family: var(--font-pacifico);
+}
+
+.inter {
+  font-family: var(--font-inter);
+}
+
+.fira-sans-condensed {
+  font-family: var(--fira-sans-condensed);
 }
 
 @media (prefers-color-scheme: dark) {

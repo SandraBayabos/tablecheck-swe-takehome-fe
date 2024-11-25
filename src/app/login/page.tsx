@@ -3,9 +3,9 @@ import CreatePartyForm from "@/form/CreatePartyForm";
 
 const Page: NextPage = () => {
   return (
-    <div>
+    <>
       <CreatePartyForm />
-    </div>
+    </>
   );
 };
 

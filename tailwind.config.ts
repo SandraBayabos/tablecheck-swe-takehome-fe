@@ -6,6 +6,7 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/form/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -16,6 +17,7 @@ const config: Config = {
         brandDarkBrown: "#54330f",
         brandLightText: "#efe4d3",
         brandMediumBrown: "#a89678",
+        brandMediumPink: "#BC8E62",
       },
     },
   },
