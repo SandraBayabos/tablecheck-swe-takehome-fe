@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { APP_NAME } from "@/configs";
+import { Toaster } from "react-hot-toast";
+import TanStackQueryProvider from "@/providers/TanStackQueryProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,16 +27,34 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased  bg-[#2d3335] max-w-[500px] mx-auto`}
-      >
-        <div className="h-dvh relative bg-brandBeige">
-          <div className="absolute inset-0 overflow-y-auto flex flex-col">
-            <div className="flex-1">{children}</div>
+    <TanStackQueryProvider>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased  bg-[#2d3335] max-w-[500px] mx-auto`}
+        >
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              duration: 4000,
+              style: {
+                fontSize: ".85em",
+              },
+            }}
+          />
+          <div className="h-dvh relative bg-brandBeige">
+            <div className="absolute inset-0 overflow-y-auto flex flex-col">
+              <div className="flex-1">
+                <div className="text-center py-10">
+                  <h2>Welcome to Tablecheck</h2>
+                </div>
+                <div className="flex w-full justify-center items-center px-10">
+                  {children}
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </body>
-    </html>
+        </body>
+      </html>
+    </TanStackQueryProvider>
   );
 }
