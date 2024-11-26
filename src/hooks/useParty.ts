@@ -20,7 +20,7 @@ export const useParty = () => {
 
   useEffect(() => {
     if (error) {
-      queryClient.removeQueries(["currentParty"]);
+      queryClient.removeQueries({ queryKey: ["currentParty"] });
       setRetry(false);
       // router.replace("/login");
     }
