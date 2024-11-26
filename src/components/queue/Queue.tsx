@@ -11,7 +11,7 @@ const Queue = () => {
   const { party } = useParty();
   const router = useRouter();
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: async () => await checkInParty(),
     onSuccess: () => {
       toast.success("Checked in! Head to your assigned table!");
@@ -41,7 +41,7 @@ const Queue = () => {
               Your table is ready. Tap below to check in.
             </p>
             <button
-              disabled={isLoading}
+              disabled={isPending}
               onClick={handleCheckIn}
               className="bg-brandDarkBrown text-brandLightText py-3 px-6 rounded-full text-lg font-semibold shadow-md hover:bg-brandMediumBrown transition-all"
             >

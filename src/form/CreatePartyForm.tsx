@@ -19,17 +19,12 @@ const CreatePartyForm = () => {
   const queryClient = useQueryClient();
   const router = useRouter();
 
-  if (party) {
-    router.replace("/");
-  }
-
-  const { mutate, isLoading } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: async (data: { name: string; size: number }) =>
       (await createParty(data)).data,
     onSuccess: (data: PartyResponse) => {
       toast.success("Party created! You've been added to the queue.");
       queryClient.setQueryData(["currentParty"], data);
-      router.push("/");
     },
     onError: (error: any) => {
       const errorMessage =
@@ -60,6 +55,10 @@ const CreatePartyForm = () => {
     e.preventDefault();
     mutate({ name: partyName, size: partySize });
   };
+
+  if (party) {
+    router.replace("/");
+  }
 
   return (
     <div className="w-full flex flex-col rounded-2xl bg-brandDarkBrown py-10 px-4">
@@ -92,11 +91,11 @@ const CreatePartyForm = () => {
         />
 
         <button
-          disabled={isLoading}
+          disabled={isPending}
           className="py-2 px-2 mt-2 rounded-full w-1/2 bg-brandBeige text-xl fira-sans-condensed font-semibold text-brandDarkBrown"
           type="submit"
         >
-          {isLoading ? "Hold on..." : "Submit"}
+          {isPending ? "Hold on..." : "Submit"}
         </button>
       </form>
     </div>

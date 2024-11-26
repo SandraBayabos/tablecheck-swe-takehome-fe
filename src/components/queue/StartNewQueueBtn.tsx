@@ -7,11 +7,11 @@ const StartNewQueueBtn = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: async () => await deleteParty(),
     onSuccess: () => {
       toast.success("Done! Create a new party.");
-      queryClient.invalidateQueries(["currentParty"]);
+      queryClient.invalidateQueries({ queryKey: ["currentParty"] });
       router.replace("/start");
     },
     onError: (error: any) => {
@@ -29,9 +29,9 @@ const StartNewQueueBtn = () => {
       <button
         className="mx-auto block py-2 px-6 mt-8 mb-2 rounded-full bg-brandMediumBrown text-xl fira-sans-condensed font-semibold text-brandDarkBrown"
         onClick={handleStartNewQueue}
-        disabled={isLoading}
+        disabled={isPending}
       >
-        {isLoading ? "Working..." : "Start New Queue"}
+        {isPending ? "Working..." : "Start New Queue"}
       </button>
       <span className="text-xs fira-sans-condensed text-center">
         If you need to make changes to your party size, start a new queue.
