@@ -20,7 +20,7 @@ npm run dev
 
 You may now visit the app on ([http://localhost:3001](http://localhost:3001)).
 
-![alt text](image.png)
+<img src="image.png" alt="home" width="200"/>
 
 ## Built With:
 
@@ -38,6 +38,8 @@ I used React Query's `useQuery` hook to poll the backend every 10 seconds in ord
 I wanted to make use of `useQuery's` inbuilt state management, which I used to cache the current party's position in the queue. I also used it to cache the current party name as well for use in different pages and components. Using useQuery also focuses more on server state which is more crucial in this app due to the frequent updating of the party's queue position, rather than using traditional state management like Redux or ContextAPI.
 
 `Websocket` would also have been suitable for this application, however due to the nature of the assignment I wanted to try something new as I had previously used Rail's Action Cable coupled with `socket.io` on a React.js frontend to build a chat app before. Also, polling is suitable in the context of a restaurant queue app because for a restaurant, queue position updates wouldn't be happening every second, whereas websockets would be more suitable when real-time updates are more crucial.
+
+<img src="image-1.png" alt="home" width="200"/> <img src="image-2.png" alt="home" width="200"/> <img src="image-3.png" alt="home" width="200"/>
 
 ## Cookies
 
