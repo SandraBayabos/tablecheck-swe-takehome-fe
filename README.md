@@ -2,38 +2,23 @@
 
 This is the frontend application for the Tablecheck SWE take-home assignment, built with Next.js and React. Follow the steps below to clone, set up, and run the application locally.
 
-## Clone the Repository
+## Installation & Set Up
 
-First, clone this repository to your computer:
-
-```bash
-git clone https://github.com/SandraBayabos/tablecheck-swe-takehome-fe.git
-cd tablecheck-swe-takehome-fe
-```
-
-## Prerequisites
-
+NOTE: 
 Make sure you have the following installed on your machine:
 
 - Node.js (v18 and up)
 - Npm (v8 and up)
 - Npx (v10 and up)
 
-## Installing Dependencies
-
-Install the dependencies:
-
 ```bash
+git clone https://github.com/SandraBayabos/tablecheck-swe-takehome-fe.git
+cd tablecheck-swe-takehome-fe
 npm install
-```
-
-## Run the App
-
-The `package.json` script has been adjusted to run the app on `PORT 3001` ([http://localhost:3001](http://localhost:3001)) so as not to clash with the corresponding rails backend
-
-```bash
 npm run dev
 ```
+
+You may now visit the app on ([http://localhost:3001](http://localhost:3001)).
 
 ## Built With:
 
