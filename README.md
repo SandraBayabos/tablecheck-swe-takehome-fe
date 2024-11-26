@@ -20,6 +20,8 @@ npm run dev
 
 You may now visit the app on ([http://localhost:3001](http://localhost:3001)).
 
+![alt text](image.png)
+
 ## Built With:
 
 - Next.js
