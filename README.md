@@ -39,6 +39,8 @@ I wanted to make use of `useQuery's` inbuilt state management, which I used to c
 
 ## Cookies
 
+Since I'm using `axios` for making api calls, adding in the `withCredentials: true` to pass in the cookies to be verified by the backend.
+
 By using cookies to determine the current party, the user is able to check their queue position even if they refresh the page or open up a new tab, as per the requirements. Using cookies also prevents a current party from starting a new party and getting appended to the queue and causing a block in the queue for subsequent parties.
 
 However, I have also included a Start New Queue button if a user is `in_queue`, `pending_check_in` or already `seated`, in case users need to re-do their party for any reason, such as adding people to their party or re-visiting the same restaurant on the same day. This will call the `/api/parties/delete` api on the backend, delete the current party from the server, clear the cookies and redirect the user to the start page where they can submit a new party.
