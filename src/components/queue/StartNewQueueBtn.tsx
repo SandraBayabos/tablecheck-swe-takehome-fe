@@ -12,6 +12,7 @@ const StartNewQueueBtn = () => {
     onSuccess: () => {
       toast.success("Done! Create a new party.");
       queryClient.invalidateQueries({ queryKey: ["currentParty"] });
+      queryClient.removeQueries({ queryKey: ["currentParty"] });
       router.replace("/start");
     },
     onError: (error: any) => {

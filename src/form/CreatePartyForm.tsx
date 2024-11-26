@@ -2,16 +2,17 @@
 
 import { PartyResponse } from "@/api/auth";
 import { createParty } from "@/api/party";
+import Loader from "@/components/loader/Loader";
 import { useParty } from "@/hooks/useParty";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
 const MAX_CAPACITY = 10;
 
 const CreatePartyForm = () => {
-  const { party } = useParty();
+  const { party, isFetching } = useParty();
 
   const [partyName, setPartyName] = useState("");
   const [partySize, setPartySize] = useState(0);
@@ -56,8 +57,14 @@ const CreatePartyForm = () => {
     mutate({ name: partyName, size: partySize });
   };
 
-  if (party) {
-    router.replace("/");
+  useEffect(() => {
+    if (!isFetching && party) {
+      router.push("/");
+    }
+  }, [isFetching, party]);
+
+  if (isFetching && !party) {
+    return <Loader />;
   }
 
   return (

@@ -8,13 +8,10 @@ import Loader from "@/components/loader/Loader";
 export default function Home() {
   const router = useRouter();
 
-  const { party, isFetching, error } = useParty();
+  const { party, isFetching } = useParty();
 
   if (isFetching && !party) {
     return <Loader />;
-  }
-  if (!party || error) {
-    router.replace("/start");
   }
 
   if (party && ["pending_check_in", "in_queue"].includes(party.status)) {
